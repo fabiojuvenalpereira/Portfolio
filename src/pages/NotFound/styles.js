@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Comforter&family=Press+Start+2P&display=swap');
+import styled from 'styled-components';
+
+const Main = styled.div`
 
 @media (max-width: 768px) {
   .main-not-found {
@@ -83,3 +85,7 @@
     padding: 1em;
   };
 }
+
+`;
+
+export default Main;
