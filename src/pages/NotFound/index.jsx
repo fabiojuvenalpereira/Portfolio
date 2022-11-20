@@ -1,10 +1,9 @@
 import React from 'react';
-
-import './style.css';
+import Main from './styles';
 
 export default function NotFound() {
   return (
-    <main className="main-not-found">
+    <Main className="main-not-found">
       <div className="container-message">
         <div className="message">
           404
@@ -13,6 +12,6 @@ export default function NotFound() {
           <div className="text">Não clique aqui</div>
         </div>
       </div>
-    </main>
+    </Main>
   );
 }
