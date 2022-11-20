@@ -5,7 +5,7 @@ const MainHeader = styled.div`
   background-color: #242424;
   display: flex;
   height: 10vh;
-  width: 100vw;
+  width: auto;
 
   @media (max-width: 768px) {
     && img {
