@@ -2,11 +2,15 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   * {
-      box-sizing: 0;
+      box-sizing: none;
       border: none;
-      margin: 0;
+      font-family: 'Fira Code', monospace;
+      margin: none;
       outline: none;
-      padding: 0;
+      padding: none;
+      ::-webkit-scrollbar {
+        display: none;
+      }
     }
 `;
 
