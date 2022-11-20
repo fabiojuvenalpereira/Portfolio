@@ -1,17 +1,17 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
-import Home from './pages/HomePage';
-import Projects from './pages/ProjectsPage';
+import Home from './pages/Home';
+import Projects from './pages/Projects';
 import NotFound from './pages/NotFound';
 
 function App() {
   return (
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/projects" component={Projects} />
-      <Route component={NotFound} />
-    </Switch>
+    <Routes>
+      <Route exact path="/" element={<Home />} />
+      <Route exact path="/projects" element={<Projects />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 
