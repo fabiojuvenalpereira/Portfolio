@@ -4,10 +4,13 @@ import AppContext from './AppContex';
 
 export default function Provider({ children }) {
   const [page, setPage] = useState('');
+  const [projects, setProjects] = useState([]);
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const contextValue = {
     page,
     setPage,
+    projects,
+    setProjects,
   };
 
   return (
