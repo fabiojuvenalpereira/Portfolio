@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 import Header from '../../components/header';
-import LastProjects from '../../components/lastProjects';
+import LastProjects from '../../components/last-projects';
 import Footer from '../../components/footer';
 import Loading from '../../components/loading';
 
