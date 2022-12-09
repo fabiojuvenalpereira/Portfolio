@@ -1,17 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import GlobalStyle from './globalStyle';
+import Provider from './context/Provider';
 
-ReactDOM.render(
+const container = document.getElementById('app');
+const root = createRoot(container);
+root.render(
   <BrowserRouter>
-    <App />
-    <GlobalStyle />
+    <Provider>
+      <App />
+      <GlobalStyle />
+    </Provider>
   </BrowserRouter>,
-  document.getElementById('root'),
 );
 
 reportWebVitals();

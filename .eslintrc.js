@@ -18,5 +18,7 @@ module.exports = {
     'react',
   ],
   rules: {
+    'react/prop-types': ['off'],
+    'no-underscore-dangle': 'off',
   },
 };

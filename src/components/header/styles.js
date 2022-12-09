@@ -8,13 +8,13 @@ const MainHeader = styled.div`
   width: auto;
 
   @media (max-width: 768px) {
-    && img {
-      width: 50px;
-      margin-left: 1.5em;
-    }
-
     .image-area {
       width: 100%;
+    }
+
+    .image-area img {
+      width: 50px;
+      margin-left: 1.5em;
     }
 
     .buttons-area {
@@ -33,15 +33,15 @@ const MainHeader = styled.div`
   }
 
   @media (min-width: 768px) {
-    && img {
-      width: 75px;
-      margin-left: 1.5em;
-    }
-
     .image-area {
       width: 100%;
     }
 
+    .image-area img {
+      width: 60px;
+      margin-left: 1.5em;
+    }
+    
     .buttons-area {
       background: none;
       display: flex;

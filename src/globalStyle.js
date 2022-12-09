@@ -2,12 +2,12 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   * {
-      box-sizing: none;
-      border: none;
+      box-sizing: 0;
+      border: 0;
       font-family: 'Fira Code', monospace;
-      margin: none;
-      outline: none;
-      padding: none;
+      margin: 0;
+      outline: 0;
+      padding: 0;
       ::-webkit-scrollbar {
         display: none;
       }
