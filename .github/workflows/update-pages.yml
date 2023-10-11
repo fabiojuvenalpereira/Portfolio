@@ -22,16 +22,6 @@ jobs:
     - name: Build React app
       run: npm run build
 
-    - name: Check if the 'build' directory exists
-      run: |
-        if [ -d "build" ]; then
-          echo "Directory 'build' exists."
-        else
-          echo "Directory 'build' does not exist. Exiting the workflow."
-          exit 1  # Saia do fluxo de trabalho em caso de erro
-        fi
-
-
     - name: Clear old files
       run: |
         rm -rf ../fabiojuvenalpereira/fabiojuvenalpereira.github.io/*
@@ -43,7 +33,7 @@ jobs:
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
-        source-files: 'build/'
+        source-files: './build'
         destination-username: 'fabiojuvenalpereira'
         destination-repository: 'fabiojuvenalpereira.github.io'
         destination-directory: ''
