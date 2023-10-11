@@ -29,16 +29,16 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
-    - name: Pushes test file
+    - name: Push generated webpage to another repository
       uses: fabiojuvenalpereira/push-files-to-another-repository@1.1.0
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
-        source_files: 'buid/'
-        destination_repo: 'fabiojuvenalpereira/fabiojuvenalpereira.github.io'
-        destination_folder: './'
-        user_email: 'fabiojuvenalpereira@hotmail.com'
-        user_name: 'fabiojuvenalpereira'
+        source-files: 'build/'
+        destination-username: 'fabiojuvenalpereira'
+        destination-repository: 'fabiojuvenalpereira.github.io'
+        destination-directory: './'
+        commit-email: 'fabiojuvenalpereira@hotmail.com'
 
     # - name: Copy build files to GitHub Pages repo
     #   run: |
