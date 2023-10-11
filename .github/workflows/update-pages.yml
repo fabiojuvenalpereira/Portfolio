@@ -37,7 +37,7 @@ jobs:
         source-files: 'build/'
         destination-username: 'fabiojuvenalpereira'
         destination-repository: 'fabiojuvenalpereira.github.io'
-        destination-directory: './'
+        destination-directory: '.'
         commit-email: 'fabiojuvenalpereira@hotmail.com'
 
     # - name: Copy build files to GitHub Pages repo
