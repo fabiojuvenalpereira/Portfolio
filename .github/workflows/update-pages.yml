@@ -23,16 +23,15 @@ jobs:
     - name: Build
       run: npm run build
 
-    - name: Check if 'public' directory exists
+    - name: Clear 'public' directory if it exists and is not empty
       run: |
-        if [ -d "public" ]; then
-          echo "Directory 'public' exists."
-          mv -u build/* public/
-        else
-          echo "Directory 'public' does not exist."
-          git clone https://github.com/fabiojuvenalpereira/fabiojuvenalpereira.github.io.git public
+        if [ -d "public" ] && [ -n "$(ls -A public)" ]; then
+          echo "Cleaning 'public' directory..."
+          rm -r public/*
         fi
-      continue-on-error: true
+
+    - name: Copy files to 'public' directory
+      run: cp -r build/* public/
 
     - name: Deploy to GitHub Pages
       run: |
