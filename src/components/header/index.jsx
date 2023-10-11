@@ -8,7 +8,10 @@ import logo from '../../images/logoWhite.png';
 
 function Header() {
   const handleClick = ({ target }) => {
-    console.log(target.id);
+    if (target) {
+      return '';
+    }
+    return '';
   };
 
   return (

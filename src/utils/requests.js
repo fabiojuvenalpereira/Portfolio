@@ -9,7 +9,7 @@ export async function getProjects() {
 
 // esqueleto da função
 export async function addProjects(data) {
-  console.log(data);
+  return data;
   // const response = await axios.post(`${BASE_URL}/projects`, data);
   // return response.status;
 }
