@@ -24,13 +24,19 @@ jobs:
     - name: Build React app
       run: npm run build
 
+    - name: Clear old files
+      run: |
+        rm -rf ../fabiojuvenalpereira/fabiojuvenalpereira.github.io/*
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Copy build files to GitHub Pages repo
       run: |
         cp -r build/* ../fabiojuvenalpereira/fabiojuvenalpereira.github.io/
         git config --global user.name "GitHub Actions"
         git config --global user.email "actions@github.com"
-        git add .
-        git commit -m "Atualização automática"
-        git push
+        git -C ../fabiojuvenalpereira/fabiojuvenalpereira.github.io/ add .
+        git -C ../fabiojuvenalpereira/fabiojuvenalpereira.github.io/ commit -m "Atualização automática"
+        git -C ../fabiojuvenalpereira/fabiojuvenalpereira.github.io/ push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
