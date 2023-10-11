@@ -30,7 +30,6 @@ jobs:
 
 
     - name: Pushes test file
-      uses: fabiojuvenalpereira/portfolio@main
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
