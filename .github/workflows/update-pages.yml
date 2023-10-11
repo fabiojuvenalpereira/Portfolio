@@ -29,24 +29,24 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
-    - name: Push generated webpage to another repository
-      uses: fabiojuvenalpereira/push-files-to-another-repository@1.1.0
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-      with:
-        source-files: 'build/'
-        destination-username: 'fabiojuvenalpereira'
-        destination-repository: 'fabiojuvenalpereira.github.io'
-        destination-directory: './'
-        commit-email: 'fabiojuvenalpereira@hotmail.com'
-
-    # - name: Copy build files to GitHub Pages repo
-    #   run: |
-    #     cp -r build/* ../fabiojuvenalpereira/fabiojuvenalpereira.github.io/
-    #     git config --global user.name "GitHub Actions"
-    #     git config --global user.email "actions@github.com"
-    #     git -C ../fabiojuvenalpereira/fabiojuvenalpereira.github.io/ add .
-    #     git -C ../fabiojuvenalpereira/fabiojuvenalpereira.github.io/ commit -m "Atualização automática"
-    #     git -C ../fabiojuvenalpereira/fabiojuvenalpereira.github.io/ push
+    # - name: Push generated webpage to another repository
+    #   uses: fabiojuvenalpereira/push-files-to-another-repository@1.1.0
     #   env:
-    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #     API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+    #   with:
+    #     source-files: 'build/'
+    #     destination-username: 'fabiojuvenalpereira'
+    #     destination-repository: 'fabiojuvenalpereira.github.io'
+    #     destination-directory: './'
+    #     commit-email: 'fabiojuvenalpereira@hotmail.com'
+
+    - name: Copy build files to GitHub Pages repo
+      run: |
+        cp -r build/* ../fabiojuvenalpereira/fabiojuvenalpereira.github.io/
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        git -C ../fabiojuvenalpereira/fabiojuvenalpereira.github.io/ add .
+        git -C ../fabiojuvenalpereira/fabiojuvenalpereira.github.io/ commit -m "Atualização automática"
+        git -C ../fabiojuvenalpereira/fabiojuvenalpereira.github.io/ push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
