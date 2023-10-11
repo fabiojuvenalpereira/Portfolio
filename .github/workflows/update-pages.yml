@@ -16,7 +16,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: 18
+        node-version: 18  # Use a versão de Node.js adequada ao seu projeto
 
     - name: Install dependencies
       run: npm install
@@ -24,19 +24,13 @@ jobs:
     - name: Build React app
       run: npm run build
 
-    - name: Clear old files
-      run: |
-        rm -rf ../fabiojuvenalpereira/fabiojuvenalpereira.github.io/*
+    - name: Push generated webpage to GitHub Pages
+      uses: nkoppel/push-files-to-another-repository@1.1.0
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Copy build files to GitHub Pages repo
-      run: |
-        cp -r build/* ../fabiojuvenalpereira/
-        git config --global user.name "GitHub Actions"
-        git config --global user.email "actions@github.com"
-        git -C ../fabiojuvenalpereira/fabiojuvenalpereira.github.io/ add .
-        git -C ../fabiojuvenalpereira/fabiojuvenalpereira.github.io/ commit -m "Atualização automática"
-        git -C ../fabiojuvenalpereira/fabiojuvenalpereira.github.io/ push
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        API_TOKEN_GITHUB: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        source-files: 'build/'
+        destination-username: 'fabiojuvenalpereira'
+        destination-repository: 'fabiojuvenalpereira.github.io'
+        destination-directory: ''
+        commit-email: 'fabiojuvenalpereira@hotmail.com'
