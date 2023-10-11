@@ -1,3 +1,4 @@
+name: Deploy to GitHub Pages
 on:
   push:
     branches:
@@ -8,44 +9,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout Repository
       uses: actions/checkout@v2
 
-    - name: Setup Node.js
+    - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: 18
+        node-version: 14
 
-    - name: Install dependencies
-      run: npm install
+    - name: Install Dependencies
+      run: npm install  # ou o comando necessário para instalar as dependências
 
-    - name: Build React app
-      run: npm run build
+    - name: Build
+      run: npm run build  # ou o comando para construir sua aplicação
 
-    - name: Clear old files
+    - name: Deploy to GitHub Pages
       run: |
-        rm -rf ../fabiojuvenalpereira/fabiojuvenalpereira.github.io/*
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        git clone https://github.com/fabiojuvenalpereira/fabiojuvenalpereira.github.io.git public
+        cp -r build/* public/
+        cd public
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add .
+        git commit -m "Auto-deploy from GitHub Actions"
+        git push
 
-    - name: Copy files to another repository
-      uses: nkoppel/push-files-to-another-repository@v1.1.1
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-      with:
-        source-files: './build'
-        destination-username: 'fabiojuvenalpereira'
-        destination-repository: 'fabiojuvenalpereira.github.io'
-        destination-directory: ''
-        commit-email: 'fabiojuvenalpereira@hotmail.com'
 
-    # - name: Copy build files to GitHub Pages repo
-    #   run: |
-    #     cp -r build/* ../fabiojuvenalpereira/fabiojuvenalpereira.github.io/
-    #     git config --global user.name "GitHub Actions"
-    #     git config --global user.email "actions@github.com"
-    #     git -C ../fabiojuvenalpereira/fabiojuvenalpereira.github.io/ add .
-    #     git -C ../fabiojuvenalpereira/fabiojuvenalpereira.github.io/ commit -m "Atualização automática"
-    #     git -C ../fabiojuvenalpereira/fabiojuvenalpereira.github.io/ push
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
