@@ -18,10 +18,21 @@ jobs:
         node-version: 14
 
     - name: Install Dependencies
-      run: npm install  # ou o comando necessário para instalar as dependências
+      run: npm install
 
     - name: Build
-      run: npm run build  # ou o comando para construir sua aplicação
+      run: npm run build
+
+    - name: Check if 'public' directory exists
+      run: |
+        if [ -d "public" ]; then
+          echo "Directory 'public' exists."
+          mv -u build/* public/
+        else
+          echo "Directory 'public' does not exist."
+          git clone https://github.com/fabiojuvenalpereira/fabiojuvenalpereira.github.io.git public
+        fi
+      continue-on-error: true
 
     - name: Deploy to GitHub Pages
       run: |
