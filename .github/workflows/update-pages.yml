@@ -22,20 +22,14 @@ jobs:
     - name: Build React app
       run: npm run build
 
-    - name: Clear old files
-      run: |
-        rm -rf ../fabiojuvenalpereira/fabiojuvenalpereira.github.io/*
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-
     - name: Copy files to another repository
       uses: nkoppel/push-files-to-another-repository@v1.1.1
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
-        source-files: 'build/'
+        source-files: 'build'
         destination-username: 'fabiojuvenalpereira'
+        destination-branch: 'main'
         destination-repository: 'fabiojuvenalpereira.github.io'
-        destination-directory: '.'
+        destination-directory: 'public'
         commit-email: 'fabiojuvenalpereira@hotmail.com'
