@@ -1,17 +1,19 @@
+name: Build and Deploy
+
 on:
   push:
     branches:
       - main
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Setup Node.js
+    - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
         node-version: 18
@@ -19,17 +21,15 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Build React app
+    - name: Build
       run: npm run build
 
-    - name: Copy files to another repository
-      uses: nkoppel/push-files-to-another-repository@v1.1.1
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-      with:
-        source-files: 'build'
-        destination-username: 'fabiojuvenalpereira'
-        destination-branch: 'main'
-        destination-repository: 'fabiojuvenalpereira.github.io'
-        destination-directory: 'public'
-        commit-email: 'fabiojuvenalpereira@hotmail.com'
+    - name: Deploy to GitHub Pages
+      run: |
+        git config user.name "$GITHUB_ACTOR"
+        git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+        echo "fabiojuvenalpereira.com" > CNAME
+        git add .
+        git commit -m "Deploy to GitHub Pages"
+        git push --force --quiet "https://${{ secrets.GITHUB_TOKEN }}@github.com/fabiojuvenalpereira/fabiojuvenalpereira.github.io.git" main:gh-pages
+
