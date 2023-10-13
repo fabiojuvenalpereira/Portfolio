@@ -23,11 +23,11 @@ jobs:
     - name: Build
       run: npm run build
 
-    - name: Clear 'public' directory if it exists and is not empty
-      run: |
-        if [ -d "public" ] && [ -n "$(ls -A public)" ]; then
-          echo "Cleaning 'public' directory..."*
-        fi
+    # - name: Clear 'public' directory if it exists and is not empty
+    #   run: |
+    #     if [ -d "public" ] && [ -n "$(ls -A public)" ]; then
+    #       echo "Cleaning 'public' directory..."*
+    #     fi
 
     - name: Copy files to 'public' directory
       run: cp -r build/* public/
@@ -35,7 +35,6 @@ jobs:
     - name: Deploy to GitHub Pages
       run: |
         git clone https://github.com/fabiojuvenalpereira/fabiojuvenalpereira.github.io.git public
-        cp -r build/* public/
         cd public
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
