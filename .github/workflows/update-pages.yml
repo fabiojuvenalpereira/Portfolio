@@ -26,8 +26,7 @@ jobs:
     - name: Clear 'public' directory if it exists and is not empty
       run: |
         if [ -d "public" ] && [ -n "$(ls -A public)" ]; then
-          echo "Cleaning 'public' directory..."
-          rm -r public/*
+          echo "Cleaning 'public' directory..."*
         fi
 
     - name: Copy files to 'public' directory
